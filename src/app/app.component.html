@@ -1,5 +1,5 @@
 <h1>{{title}}</h1>
-<button (click)="alterarTexto()"> Alterar</button>
+<button (click)="alterarTexto()"> Altera</button>
 <ul>
   <li *ngFor="let todo of todos">{{todo.id}}. {{todo.title}} - 
     <button *ngIf="!todo.done">CONCLUIR</button> || 
