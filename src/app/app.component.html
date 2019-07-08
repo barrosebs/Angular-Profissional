@@ -2,12 +2,10 @@
 
 
 <ul class="animated flipInX" *ngIf="mode=='list'">
-  <p *ngIf="todos.length==0"><small>Você ainda não tem nenhuma tarefa hoje</small></p>
-  <li *ngFor="let todo of todos">{{todo.id}}. {{todo.title}} - 
-    <button *ngIf="!todo.done" (click)="markAsDone(todo)">CONCLUIR</button> || 
-    <button *ngIf="todo.done" (click)="markAsUnDone(todo)">REFAZER </button> ||
-    <button (click)="remove(todo)">REMOVER</button> 
-  </li>
+  <p *ngIf="todos.length==0" class="text-center"><small>Você ainda não tem nenhuma tarefa hoje</small></p>
+  <li *ngFor="let todo of todos">{{todo.id}}. {{todo.title}} <button (click)="remove(todo)"><i class="far fa-trash-alt fa-2x"></i></button> 
+    <button *ngIf="!todo.done" (click)="markAsDone(todo)"><i class="fas fa-check-circle fa-2x check"></i></button> 
+    <button *ngIf="todo.done" (click)="markAsUnDone(todo)"><i class="far fa-check-circle fa-2x"></i> </button> </li>
 </ul>
 
 <div id="modal" *ngIf="mode=='add'" class="animated flipInx">
