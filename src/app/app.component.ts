@@ -21,7 +21,9 @@ export class AppComponent {
         Validators.maxLength(60),
         Validators.required
       ])]
-    })
+
+    });
+    this.load();    
 
   }
   add(){
@@ -44,15 +46,21 @@ export class AppComponent {
 
   markAsDone(todo: Todo){
     todo.done=true
+    this.save();
   }
 
   markAsUnDone(todo:Todo){
     todo.done=false;
+    this.save();
   }
 
   save(){
     const data = JSON.stringify(this.todos);
     localStorage.setItem('todos', data);
+  }
+  load(){
+    const data = localStorage.getItem('todos')
+    this.todos = JSON.parse(data);
   }
 
 }
