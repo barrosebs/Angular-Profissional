@@ -1,6 +1,7 @@
-<h1 class="title">{{title}}</h1>
-<button (click)="alterarTexto()"> Altera</button>
-<ul>
+<h1 class="title animated tada">{{title}}</h1>
+
+
+<ul class="animated flipInX" *ngIf="mode=='list'">
   <p *ngIf="todos.length==0"><small>Você ainda não tem nenhuma tarefa hoje</small></p>
   <li *ngFor="let todo of todos">{{todo.id}}. {{todo.title}} - 
     <button *ngIf="!todo.done" (click)="markAsDone(todo)">CONCLUIR</button> || 
@@ -9,6 +10,7 @@
   </li>
 </ul>
 
+<div id="modal" *ngIf="mode=='add'" class="animated flipInx">
 <form [formGroup]="form">
   <fieldset>
     <label >Tarefa</label>
@@ -17,3 +19,13 @@
     <button [disabled]="form.invalid" (click)="add()" class="button">Salvar</button>
   </fieldset>
 </form>
+</div>
+
+<button class="add-button animated fadeInUp button" (click)="changeMode('add')" *ngIf="mode=='list'">
+  <i class="fa fa-plus-circle"></i>
+  NOVA TAREFA
+</button>
+<button class="add-button animated fadeInUp button" (click)="changeMode('list')" *ngIf="mode=='add'">
+  <i class="fa fa-times-circle"></i>
+  CANCELAR
+</button>
